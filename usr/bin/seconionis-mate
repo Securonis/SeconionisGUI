@@ -21,7 +21,7 @@ from gi.repository import AyatanaAppIndicator3 as appindicator
 from gi.repository import Notify, GdkPixbuf
 
 def main():
-  Notify.init("Thuzad")
+  Notify.init("Seconionis")
   indicator = appindicator.Indicator.new("customtray", '', appindicator.IndicatorCategory.APPLICATION_STATUS)
   indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
   indicator.set_menu(menu(indicator))
@@ -206,12 +206,10 @@ def tor_router_status(menuitem):
   process = subprocess.Popen(['sudo', '/etc/init.d/tor-router', 'status'], stdout=subprocess.PIPE)
   stdout = process.communicate()[0]
 
-  print(stdout.decode('utf-8'))
-
   if process.returncode == 0:
-    notification = Notify.Notification.new(_('Seconionis is running'), stdout.decode('utf-8'))
+    notification = Notify.Notification.new(_('Seconionis is running'), _('Service is active.'))
   else:
-    notification = Notify.Notification.new(_('Seconionis is not running'), stdout.decode('utf-8'))
+    notification = Notify.Notification.new(_('Seconionis is not running'), _('Service is stopped.'))
 
   image = GdkPixbuf.Pixbuf.new_from_file(menuitem.get_parent().indicator.ICON_ENABLED)
 
