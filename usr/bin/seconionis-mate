@@ -239,7 +239,7 @@ def dialog_about(menuitem):
   about_dialog.set_skip_taskbar_hint(True)
   about_dialog.connect("destroy", lambda w: (menuitem.set_sensitive(True), w.destroy()))
 
-  about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(menuitem.get_parent().indicator.APP_ICON).scale_simple(192, 192, GdkPixbuf.InterpType.BILINEAR))
+  about_dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file(menuitem.get_parent().indicator.APP_ICON).scale_simple(48, 48, GdkPixbuf.InterpType.BILINEAR))
 
   about_dialog.set_program_name(_('Seconionis'))
   about_dialog.set_version("1.0")
